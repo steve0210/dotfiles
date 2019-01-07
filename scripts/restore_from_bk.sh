@@ -10,7 +10,7 @@ dir_bk=$HOME/.dotfiles_bk
 
 ##########
 
-for store in $(find $dir_bk -type f -name '.*rc')
+for store in $(find $dir_bk -type f -name '.*')
 do
   file=$HOME/$(basename $store)
   if [ -h "$file" ]; then

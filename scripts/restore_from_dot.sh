@@ -10,19 +10,15 @@ dir=$HOME/.dotfiles
 
 ##########
 
-for file in $(find $HOME -maxdepth 1 ! -type d -name '.*rc')
+for store in $(find $dir -type f -name '*.dot')
 do
-  store=$dir/$(basename $file | cut -d . -f 2).dot
-  if [ -f "$store" ]; then
-    if [ -h "$file" ]; then
-      echo "Restoring dot file $store to $file"
-      rm $file
-      cp $store $file
-    else
-      echo "File $file is not linked"
-    fi
+  file="$HOME/.$(basename $store | cut -d . -f 1)"
+  if [ -h "$file" ]; then
+    echo "Restoring dot file $store to $file"
+    rm $file
+    cp $store $file
   else
-    echo "File $store is not stored"
+    echo "File $file is not linked"
   fi
 done
 
