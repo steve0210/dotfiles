@@ -1,0 +1,5 @@
+--database=postgresql
+--webpack=react
+--skip-coffee
+--skip-turbolinks
+--skip-sprockets
