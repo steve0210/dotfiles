@@ -7,7 +7,7 @@
 ########## Variables
 
 dir=$HOME/.dotfiles
-dotfiles=(\( -name '.*rc' -o -name '.*config' \)) 
+dotfiles=(\( -name '.*rc' -o -name '.*config' -o -name '.*profile' \)) 
 
 ##########
 
