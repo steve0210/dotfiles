@@ -16,9 +16,9 @@ for store in $(find $dir -type f -name '*.dot')
 do
   file=$(echo $store | sed -e "s#/$subdir##" -e 's#.dot$##')
   if [ -f "$file" ]; then
-    file_bk="$dir_bk/$(basename $file)"
+    file_bk=$dir_bk/$(echo $file | sed -e "s#$HOME/##")
     echo "Backing up dot file $file to $file_bk"
-    mkdir -p $dir_bk
+    mkdir -p $(dirname $file_bk)
     if [ -f "$file_bk" ]; then 
       rm $file_bk
     fi
