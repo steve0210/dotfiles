@@ -6,14 +6,15 @@
 
 ########## Variables
 
-dir=$HOME/.dotfiles
-dir_bk=$HOME/.dotfiles_bk
+subdir=.dotfiles
+dir=$HOME/$subdir
+dir_bk=$HOME/${subdir}_bk
 
 ##########
 
 for store in $(find $dir -type f -name '*.dot')
 do
-  file="$HOME/.$(basename $store | cut -d . -f 1)"
+  file=$(echo $store | sed -e "s#/$subdir##" -e 's#.dot$##')
   if [ -f "$file" ]; then
     file_bk="$dir_bk/$(basename $file)"
     echo "Backing up dot file $file to $file_bk"

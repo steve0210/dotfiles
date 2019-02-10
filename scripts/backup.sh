@@ -6,14 +6,16 @@
 
 ########## Variables
 
-dir=$HOME/.dotfiles
-dotfiles=(\( -name '.*rc' -o -name '.*config' -o -name '.*profile' -o -name '.*login' \)) 
+subdir=.dotfiles
+dir=$HOME/$subdir
+dotfiles=(\( -name 'config' -o -name '.*rc' -o -name '.*config' -o -name '.*profile' -o -name '.*login' \)) 
 
 ##########
 
-for file in $(find $HOME -maxdepth 1 ! -type d ${dotfiles[*]})
+for file in $(find $HOME -maxdepth 2 ! -type d ${dotfiles[*]}  -not -path "${dir}*/*")
 do
-  store=$dir/$(basename $file | cut -d . -f 2).dot
+  store=$dir/$(echo $file | sed -e "s#$HOME/##").dot
+  mkdir -p $(dirname $store)
   if [ ! -h "$file" ]; then
     echo "Backing up dot file $file to $store"
     if [ -f "$store" ]; then
