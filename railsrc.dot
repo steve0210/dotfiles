@@ -3,3 +3,5 @@
 --skip-coffee
 --skip-turbolinks
 --skip-sprockets
+--skip-action-cable
+--skip-active-storage
